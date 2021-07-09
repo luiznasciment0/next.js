@@ -246,6 +246,12 @@ function Link(props: React.PropsWithChildren<LinkProps>) {
   }
   const childRef: any = child && typeof child === 'object' && child.ref
 
+  if (child.type === 'img') {
+    console.warn(
+      'HTML image tags should not have href attribute. Wrap it with a HTML link tag (<a>). More: https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/img'
+    )
+  }
+
   const [setIntersectionRef, isVisible] = useIntersection({
     rootMargin: '200px',
   })
